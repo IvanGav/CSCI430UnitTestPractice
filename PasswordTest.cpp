@@ -63,9 +63,30 @@ TEST(PasswordTest, mixed_case_one_low)
 	ASSERT_EQ(true, actual);
 }
 
-TEST(PasswordTest, mixed_case_one_one_cap)
+TEST(PasswordTest, mixed_case_one_cap)
 {
 	Password my_password;
 	int actual = my_password.has_mixed_case("abcdefghiJklmnop");
 	ASSERT_EQ(true, actual);
+}
+
+TEST(PasswordTest, mixed_case_special)
+{
+	Password my_password;
+	int actual = my_password.has_mixed_case("*9-b127K1^*");
+	ASSERT_EQ(true, actual);
+}
+
+TEST(PasswordTest, mixed_case_special_all_low)
+{
+	Password my_password;
+	int actual = my_password.has_mixed_case("*9-b12j71^*");
+	ASSERT_EQ(false, actual);
+}
+
+TEST(PasswordTest, mixed_case_special_all_cap)
+{
+	Password my_password;
+	int actual = my_password.has_mixed_case("*9-G12F71^*");
+	ASSERT_EQ(false, actual);
 }
