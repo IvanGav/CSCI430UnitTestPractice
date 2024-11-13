@@ -90,3 +90,10 @@ TEST(PasswordTest, mixed_case_special_all_cap)
 	int actual = my_password.has_mixed_case("*9-G12F71^*");
 	ASSERT_EQ(false, actual);
 }
+
+TEST(PasswordTest, mixed_case_empty)
+{
+	Password my_password;
+	int actual = my_password.has_mixed_case("");
+	ASSERT_EQ(false, actual);
+}
